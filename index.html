@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta id="themeColor" name="theme-color" content="#f7f2e8">
+    <title>CCA Exam Flashcard Game</title>
+    <script>
+      (function () {
+        var theme = localStorage.getItem("cca-exam-forge-theme-v1");
+        if (!theme && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          theme = "dark";
+        }
+        document.documentElement.dataset.theme = theme || "light";
+      })();
+    </script>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">CCA</div>
+          <div>
+            <h1>Exam Forge</h1>
+            <p>Claude Certified Architect study game</p>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Main navigation">
+          <button class="nav-item is-active" data-view="guide">Guide</button>
+          <button class="nav-item" data-view="study">Cards</button>
+          <button class="nav-item" data-view="game">Game</button>
+          <button class="nav-item" data-view="progress">Progress</button>
+          <button class="nav-item" data-view="sources">Sources</button>
+        </nav>
+        <div class="sidebar-card">
+          <div class="stat-label">Weighted coverage</div>
+          <div class="big-number" id="sidebarCoverage">0%</div>
+          <div class="small-muted">Master cards across all exam domains.</div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <div class="eyebrow">Source-backed study mode</div>
+            <h2 id="viewTitle">Guide</h2>
+          </div>
+          <div class="topbar-actions">
+            <label class="domain-filter">
+              <span>Domain</span>
+              <select id="domainFilter" aria-label="Filter by domain">
+                <option value="all">All domains</option>
+              </select>
+            </label>
+            <button class="theme-toggle" type="button" data-action="toggle-theme" aria-label="Switch to dark mode">
+              <span class="theme-toggle-label">Dark mode</span>
+            </button>
+          </div>
+        </header>
+        <section id="app" class="view" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <button class="mobile-nav-item is-active" data-view="guide">Guide</button>
+      <button class="mobile-nav-item" data-view="study">Cards</button>
+      <button class="mobile-nav-item" data-view="game">Game</button>
+      <button class="mobile-nav-item" data-view="progress">Stats</button>
+      <button class="mobile-nav-item" data-view="sources">Sources</button>
+      <button class="mobile-nav-item theme-mobile" data-action="toggle-theme">
+        <span class="theme-toggle-label">Dark</span>
+      </button>
+    </nav>
+
+    <script src="data/sources.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

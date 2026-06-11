@@ -1,0 +1,9 @@
+{
+  "name": "CCA Exam Forge",
+  "short_name": "CCA Forge",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fbf8f1",
+  "theme_color": "#f7f2e8",
+  "icons": []
+}
